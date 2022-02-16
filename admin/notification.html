@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Gateflix</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <!-- Bootstrap CSS cdn-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <!-- font awesome icons cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel='stylesheet' type='text/css' media='screen' href='css/style3.css'>
+</head>
+
+<body>
+    <div class="wrapper hover_collapse">
+        <div class="top_navbar">
+            <div class="logo">Gateflix</div>
+            <div class="menu">
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar">
+            <div class="sidebar_inner">
+                <ul>
+                    <li>
+                        <a href="admin.html" target="_">
+                            <span class="icon"><i class="fa fa-qrcode"></i></span>
+                            <span class="text">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="uously.html" target="_">
+                            <span class="icon"><i class="fa fa-video"></i></span>
+                            <span class="text">upload video</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="none.html">
+                            <span class="icon"><i class="fa fa-check-circle"></i></span>
+                            <span class="text">Notifications</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon"><i class="fa fa-book"></i></span>
+                            <span class="text">Event</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon"><i class="fa fa-question-circle"></i></span>
+                            <span class="text">About</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon"><i class="fa fa-pen"></i></span>
+                            <span class="text">Service</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon"><i class="fa fa-id-card"></i></span>
+                            <span class="text">Contact</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+
+            <h2 style="text-align:center; padding-top: 70px">Enter the Notifications</h2>
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <form action="/action_page.php">
+                    <div class="mb-3 mt-3">
+                        <label for="text">Title : </label>
+                        <input type="text" class="form-control" id="title" placeholder="Enter Title" name="title">
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <label for="file">image : </label>
+                        <input type="file" class="form-control" id="img" placeholder="" name="img">
+                    </div>
+
+                    <div class="form-check mb-3">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" name="remember"> Remember me
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </form>
+            </div>
+            <div class="col-md-2"></div>
+
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript">
+    var li_items = document.querySelectorAll(".sidebar ul li");
+    var hamburger = document.querySelector(".hamburger");
+    var wrapper = document.querySelector(".wrapper");
+
+
+    li_items.forEach((li_item) => {
+        li_item.addEventListener("mouseenter", () => {
+
+
+            li_item.closest(".wrapper").classList.remove("hover_collapse");
+
+        })
+    })
+
+    li_items.forEach((li_item) => {
+        li_item.addEventListener("mouseleave", () => {
+
+            li_item.closest(".wrapper").classList.add("hover_collapse");
+
+        })
+    })
+
+    hamburger.addEventListener("click", () => {
+
+        hamburger.closest(".wrapper").classList.toggle("hover_collapse");
+    })
+</script>
+</body>
+
+</html>

@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS cdn-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <!-- font awesome icons cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel='stylesheet' type='text/css' media='screen' href='css/style3.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/style2.css'>
+
+    <title>Gateflix</title>
+    <style>
+        .container {
+            align: center;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+
+        .badge {
+            float: right;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+        }
+
+        input[type=text],
+        input[type=password] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+
+        .cancelbtn {
+            width: auto;
+            padding: 10px 18px;
+            background-color: #f44336;
+        }
+
+
+        .imgcontainer {
+            text-align: center;
+            margin: 24px 0 12px 0;
+            position: relative;
+        }
+
+
+        img.avatar {
+            width: 40%;
+            border-radius: 50%;
+        }
+
+
+        .container {
+            padding: 16px;
+        }
+
+
+        span.psw {
+            float: right;
+            padding-top: 16px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 20px;
+        }
+
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto 15% auto;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            position: absolute;
+            right: 25px;
+            top: 0;
+            color: #000;
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: red;
+            cursor: pointer;
+        }
+
+        /* add zoom animation*/
+        .animate {
+            -webkit-animation: animatezoom 0.6s;
+            animation: animatezoom 0.6s
+        }
+
+        @-webkit-keyframes animatezoom {
+            from {
+                -webkit-transform: scale(0)
+            }
+
+            to {
+                -webkit-transform: scale(1)
+            }
+        }
+
+        @keyframes animatezoom {
+            from {
+                transform: scale(0)
+            }
+
+            to {
+                transform: scale(1)
+            }
+        }
+
+        @media screen and (max-width: 300px) {
+            span.psw {
+                display: block;
+                float: none;
+            }
+
+            .cancelbtn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light nav-color">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Gateflix</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Exam
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                            <li><a class="dropdown-item" href="#">Gate Online Live Classes</a></li>
+                            <li><a class="dropdown-item" href="#">Gate Recorded Lecture (HINDI)</a></li>
+                            <li><a class="dropdown-item" href="#">Gate Text Series</a></li>
+                            <li><a class="dropdown-item" href="#">Gate Material</a></li>
+                            <li><a class="dropdown-item" href="#">Gate Practice Book</a></li>
+                            <li><a class="dropdown-item" href="#">Gate Recorded Lecture (ENGLISH)</a></li>
+                            <li><a class="dropdown-item" href="#">CTQ (Concept Through Question)</a></li>
+                            <li><a class="dropdown-item" href="#">CAT</a></li>
+                            <li><a class="dropdown-item" href="#">Spoken English</a></li>
+                            <li><a class="dropdown-item" href="#">Vedic Maths</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Video lecture
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                            <li><a class="dropdown-item" href="#">Mechanical Engineering</a></li>
+                            <li><a class="dropdown-item" href="#">Computer Science Engineering</a></li>
+                            <li><a class="dropdown-item" href="#">Civil Engineering</a></li>
+                            <li><a class="dropdown-item" href="#">Electrical Engineering</a></li>
+                            <li><a class="dropdown-item" href="#">electronics & Communication</a></li>
+                            <li><a class="dropdown-item" href="#">Chemical Engineering</a></li>
+                            <li><a class="dropdown-item" href="#">Instrumentation Engineering</a></li>
+                            <li><a class="dropdown-item" href="#">Production and Industrial Engineering</a></li>
+                            <li><a class="dropdown-item" href="#">Engineering Science</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Test Series
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                            <li><a class="dropdown-item" href="#">Mechanical Engineering</a></li>
+                            <li><a class="dropdown-item" href="#">Computer Science Engineering</a></li>
+                            <li><a class="dropdown-item" href="#">Civil Engineering</a></li>
+                            <li><a class="dropdown-item" href="#">Electrical Engineering</a></li>
+                            <li><a class="dropdown-item" href="#">electronics & Communication</a></li>
+                            <li><a class="dropdown-item" href="#">Chemical Engineering</a></li>
+                            <li><a class="dropdown-item" href="#">Instrumentation Engineering</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            E-Book
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                            <li><a class="dropdown-item" href="#">Mechanical Engineering</a></li>
+                            <li><a class="dropdown-item" href="#">Computer Science Engineering</a></li>
+                            <li><a class="dropdown-item" href="#">Civil Engineering</a></li>
+                            <li><a class="dropdown-item" href="#">Electrical Engineering</a></li>
+                            <li><a class="dropdown-item" href="#">electronics & Communication</a></li>
+                            <li><a class="dropdown-item" href="#">Chemical Engineering</a></li>
+                            <li><a class="dropdown-item" href="#">Instrumentation Engineering</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Practice books
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                            <li><a class="dropdown-item" href="#">Mechanical Engineering</a></li>
+                            <li><a class="dropdown-item" href="#">Computer Science Engineering</a></li>
+                            <li><a class="dropdown-item" href="#">Civil Engineering</a></li>
+                            <li><a class="dropdown-item" href="#">Electrical Engineering</a></li>
+                            <li><a class="dropdown-item" href="#">electronics & Communication</a></li>
+                            <li><a class="dropdown-item" href="#">Chemical Engineering</a></li>
+                            <li><a class="dropdown-item" href="#">Instrumentation Engineering</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            CTQ
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                            <li><a class="dropdown-item" href="#">Mechanical Engineering</a></li>
+                            <li><a class="dropdown-item" href="#">Computer Science Engineering</a></li>
+                            <li><a class="dropdown-item" href="#">Civil Engineering</a></li>
+                            <li><a class="dropdown-item" href="#">Electrical Engineering</a></li>
+                            <li><a class="dropdown-item" href="#">electronics & Communication</a></li>
+                            <li><a class="dropdown-item" href="#">Chemical Engineering</a></li>
+                            <li><a class="dropdown-item" href="#">Instrumentation Engineering</a></li>
+                            <li><a class="dropdown-item" href="#">CAT CTQ</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <button class="btn btn-outline-success nav-login"
+                    onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+                <button class="btn btn-outline-success nav-login"
+                    onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Singup</button>
+
+                <!-- <a href="login.html" button="" class="">Login</a>
+                    <a href="login.html" button="" class="btn btn-outline-success nav-login">Sign up</a> -->
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div>
+                    <video class="video" width="550" height="300" controls>
+                        <source src="video/Topological Sort (DFS).mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p><b>-->Information about the course and accessing the content</b></p>
+                    <div>
+                        <br><br>
+                        <h3>Description</h3>
+                        <p>
+                            here you can read description about course and
+                            understand all the thing what you gonna get here.
+                            here you can read description about course and
+                            understand all the thing what you gonna get here.
+                            here you can read description about course and
+                            understand all the thing what you gonna get here.
+                            here you can read description about course and
+                            understand all the thing what you gonna get here.
+                        </p>
+                    </div>
+                    <br>
+                    <div class="dropdown">
+                        <select class="opt">
+                            <option value="">Syllabus</option>
+                            <option value="">Unit-01</option>
+                            <option value="">Unit-02</option>
+                            <option value="">Unit-03</option>
+                            <option value="">Unit-04</option>
+                            <option value="">Unit-05</option>
+                        </select>
+                    </div>
+                    <br>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="size: 30rem;">
+                    <img src="img/logo.svg" class="card-img-top" alt="..." style="height: 200px;">
+                    <div class="card-body">
+                        <h6 style="text-decoration: line-through;">MRP = 1999 </h6>
+                        <h5>Offer prize = 1998 </h5>
+                        <a href="#" class="btn btn-primary">Buy Now</a>
+                    </div>
+                </div>
+                <hr style="border: 3px solid black">
+
+                <div>
+                    <h1>Recommendation</h1>
+                    <ul class="list-group">
+                        <li class="list-group-item">Mechanical Engineering <span
+                                class="badge bg-primary rounded-pill">Buy
+                               Now</span></li>
+                        <li class="list-group-item">computer science Engineering <span
+                                class="badge bg-primary rounded-pill">Buy
+                               Now</span> </li>
+                        <li class="list-group-item">civil Engineering <span class="badge bg-primary rounded-pill">Buy
+                               Now</span>
+                        </li>
+                        <li class="list-group-item">electrical Engineering <span
+                                class="badge bg-primary rounded-pill">Buy
+                               Now</span> </li>
+                        <li class="list-group-item">Electronics & communication Engineering <span
+                                class="badge bg-primary rounded-pill">Buy
+                               Now</span> </li>
+                        <li class="list-group-item">chemical Engineering <span class="badge bg-primary rounded-pill">Buy
+                               Now</span></li>
+                        <li class="list-group-item">instrumentation Engineering <span
+                                class="badge bg-primary rounded-pill">Buy
+                               Now</span></li>
+                        <li class="list-group-item">production & industrial Engineering<span
+                                class="badge bg-primary rounded-pill">Buy
+                               Now</span></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <hr style="height:3px; border-width:0">
+    <div class="container" style="margin:30px; align:center;">
+        <div class="row">
+            <div class="col-md-3">
+                <p class="fp" style="text-align:center;">Newsletter Sign Up</p>
+                <p style="font-size: 11px; text-align: center;"> (Be updated with our latest news)</p>
+            </div>
+            <div class="col-md-3">
+                <p style=" text-align: center;font-size: 15px;">Join and become amongst the first ones to get latest
+                    news
+                    about
+                    discounts and
+                    offers.</p>
+            </div>
+            <div class=" col-md-6">
+                <form class="example" action="action_page.php">
+                    <input type="text" placeholder="Your Email Address.." name="search">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="container">
+            <div class="row ">
+
+                <div class="col-md-3 ">
+                    <h5>Get The App</h5>
+                    <hr style="height:3px; border-width:0" class="hr">
+                    <div class="d-inline-flex ">
+                        <P style="font-size: 16px; padding:15px">
+                            <span style="font-weight: 700;"> Gateflix</span> allows students to be thorough
+                            with their choice of streams or subjects,
+                            by enabling them to learn at their
+                            comfortable time without losing out
+                            on sessions and conveniently access
+                            sessions from any given place.
+                        </P>
+                    </div>
+                </div>
+                <div class="col-md-4  ">
+                    <h5>Exams</h5>
+                    <hr style="height:3px; border-width:0" class="hr">
+                    <div class="d-inline-flex p-3">
+                        <div class="p-2">
+                            <ul>
+                                <li><a href=" ">GATE</a></li>
+                                <li><a href=" ">GATE Exam</a></li>
+                                <li><a href=" ">IES</a></li>
+                                <li><a href=" ">G.K by V.k</a></li>
+                                <li><a href=" ">UPPSC</a></li>
+                                <li><a href=" "> GATE Booster Course</a></li>
+                            </ul>
+                        </div>
+                        <div class="p-2">
+                            <ul>
+                                <li><a href=" ">IELTS</a></li>
+                                <li><a href=" ">Banking Exams</a></li>
+                                <li><a href=" ">Aptitude Exams </a></li>
+                                <li><a href=" ">CLAT/IPM Classes</a></li>
+                            </ul>
+                        </div>
+                        <div class="p-2">
+                            <ul>
+                                <li><a href=" ">CAT </a></li>
+                                <li><a href=" ">Placement Training</a></li>
+                                <li><a href=" ">State-PSC (Technical Exams)</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-2   ">
+                    <h5>About</h5>
+                    <hr style="height:3px;border-width:0;" class="hr">
+                    <div class="d-inline-flex">
+                        <ul>
+                            <li><a href=" ">About DemoPage</a></li>
+                            <li><a href=" ">Blog</a></li>
+                            <li><a href=" ">Support</a></li>
+                            <li><a href=" ">Contact Us</a></li>
+                            <li><a href=" ">Terms and Conditions</a></li>
+                            <li><a href=" ">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <h5>Contact</h5>
+                    <hr style="height:3px;border-width:0" class="hr">
+                    <div class="d-inline-flex">
+                        <div class="d-flex flex-column">
+                            <div class="p-2">
+                                <p style=" font-size: 16px;">Helpline Number : </p>
+                                <p> <i class="fas fa-phone"></i> : 91xxxxxx88 </p>
+                                <p> <i class="fas fa-envelope"></i> : pradeep2000rawat@gmail.com </p>
+
+                            </div>
+                            <div class="p-2">
+                                <ul>
+                                    <li class="list-inline">
+                                        <a href="#"> <i class="fab fa-facebook fa-2x" style=" color:blue ;"></i></a>
+                                        &nbsp;
+                                        <a href="#"> <i class="fab fa-google fa-2x" style=" color: red;"></i></a> &nbsp;
+                                        <a href="#"> <i class="fab fa-whatsapp fa-2x" style=" color:green ;"></i></a>
+                                        &nbsp;
+                                        <a href="#"> <i class="fab fa-linkedin fa-2x" style=" color: blue ;"></i></a>
+                                        &nbsp;
+                                        <a href="#"> <i class="fab fa-github fa-2x" style=" color: black ;"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 footer-color">
+                <h4 style="text-align: center; font-size: 15px; padding: 14px; font-weight: 700">2021 Gateflix All
+                    rights
+                    reserved.</h4>
+            </div>
+        </div>
+    </footer>
+
+
+    <div id="id01" class="modal">
+
+        <form class="modal-content animate" action="/action_page.php">
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close"
+                    title="Close Modal">×</span>
+                <img src="" alt="Avatar" class="avatar">
+            </div>
+
+            <div class="container">
+                <label><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="uname" required>
+
+                <label><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" required>
+
+                <button type="submit">Login</button>
+                <input type="checkbox" checked="checked"> Remember me
+            </div>
+
+            <div class="container" style="background-color:#f1f1f1">
+                <button type="button" onclick="document.getElementById('id01').style.display='none'"
+                    class="cancelbtn">Cancel</button>
+                <span class="psw">Forgot <a href="#">password?</a></span>
+            </div>
+        </form>
+    </div>
+
+    <div id="id02" class="modal">
+        <form class="modal-content animate" action="/action_page.php">
+            <span onclick="document.getElementById('id02').style.display='none'" class="close"
+                title="Close Modal">×</span>
+            <div class="container">
+                <label><b>Email</b></label>
+                <input type="text" placeholder="Enter Email" name="email" required>
+
+                <label><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" required>
+
+                <label><b>Repeat Password</b></label>
+                <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+                <input type="checkbox"> Remember me
+                <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+
+                <div class="clearfix">
+                    <button type="button" onclick="document.getElementById('id01').style.display='none'"
+                        class="cancelbtn">Cancel</button>
+                    <button type="submit" class="signupbtn">Sign Up</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</body>
+<script>
+    var modal = document.getElementById('id01');
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+
+<script>
+    var modal = document.getElementById('id02');
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+
+</html>
